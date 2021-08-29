@@ -1,0 +1,149 @@
+body {
+    display: grid;
+    grid-template-columns: auto 600px 200px auto;
+    grid-template-rows: 70px auto; 
+}
+
+header {
+    grid-column: 2/3;
+    grid-row: 1/1;
+    font-size: 1.5em;
+}
+
+nav {
+    grid-column: 3/3;
+    grid-row: 2/2;
+}
+
+nav li {
+    list-style-type: none;
+}
+
+nav a {
+    background-color: #eee;
+    color: black;
+    display: block;
+    padding: 12px;
+    text-decoration: none;
+}
+
+nav li a:hover {
+    background-color: #ccc;
+}
+
+nav li.active a {
+    background-color: #4CAF50;
+    color: white;
+}
+
+body>section {
+    grid-column: 2/2;
+    grid-row: 2/2;
+}
+
+body>section>section {
+    display: none;
+}
+
+body>section>section.active {
+    display: block;
+}
+
+#addcontact label {
+    display: inline-block;
+    width: 5em;
+    margin: 0.5em;
+  }
+
+#addcontact input {
+    width: 15em;
+}
+  
+#addcontact button {
+    margin-left: 10em;
+    margin-top: 0.5em;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table th {
+    text-align: left;
+    background-color: #ffffff;
+}
+
+table tr:nth-child(odd){
+    background-color: #eee;
+}
+
+table td, th {
+    margin: 0.5em;
+}
+
+.slideshow {
+    position:relative;
+    width: 500px;
+    height: 500px;
+}
+
+#mapid { 
+    height: 180px; 
+}
+
+#vindu {
+    position: absolute;
+    top: 20vh; 
+    left: 20%;  
+    height: auto;
+    width: 40em;
+    background: white;
+    border: 1px solid grey;
+    margin: 1px;
+    border-radius: 3px;  
+    box-shadow: 4px 4px 14px 0px rgba(0.2,0.2,0.2,0.5);
+    padding: 0px;
+    display: inline-block;
+  }
+  
+#vindu header {
+    background: lightgrey;
+    padding: 4px 10px;
+    border-bottom: .5px solid grey;
+  }
+  
+#vindu header div {
+    display: inline-inline-block;
+    float: right;
+    font-family: arial;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  
+#vindu .content {
+    padding: 5px;
+    overflow-y: auto;
+    height: auto;
+  }
+
+#vindu label {
+    display: inline-block;
+    width: 5em;
+    margin: 0.5em;
+  }
+
+#vindu input {
+    width: 15em;
+}
+  
+#vindu button {
+    margin-left: 10em;
+    margin-top: 0.5em;
+}
+
+#vindu .show {
+    visibility: visible;
+    -webkit-animation: fadeIn 1s;
+    animation: fadeIn 1s
+  }

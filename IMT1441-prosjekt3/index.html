@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Prosjekt 3</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css"
+        integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
+        crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"
+        integrity="sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg=="
+        crossorigin=""></script>
+</head>
+
+<body>
+    <nav id="menu">
+        <ul></ul>
+    </nav>
+    <header>
+        <h1>Prosjekt III</h1>
+    </header>
+    <section>
+        <section id="slideshow" class="active">
+            <h2>Slideshow</h2>
+            <div class="slideshow"></div>
+            <style>
+                code {
+                    background: lightgrey;
+                    padding-left: .3em;
+                    padding-right: 0.3em;
+                }
+
+                .slideshow {
+                    position: relative;
+                    width: 500px;
+                    height: 500px;
+                }
+
+                .slideshow div {
+                    top: 0;
+                    left: 0;
+                    position: absolute;
+                    width: 100%;
+                    height: 100%;
+                    background-position: center;
+                    background-repeat: no-repeat;
+                    background-size: contain;
+                    background-color: #FFF;
+                    opacity: 0;
+                    transition: opacity 4s;
+                }
+
+                .slideshow>div:first-child {
+                    z-index: 0;
+                }
+
+                .slideshow>div:last-child {
+                    z-index: 1;
+                }
+            </style>
+        </section>
+        <section id="searchcontact">
+            <h2>Søk i kontaktregisteret</h2>
+            <form>
+                <label>Søk:<input type="text" name="sok" id="search"></label>
+            </form>
+            <table>
+                <thead>
+                    <th>Fornavn</th>
+                    <th>Etternavn</th>
+                    <th>Tlf</th>
+                    <th>Epost</th>
+                    <th>Adresse</th>
+                    <th>Postnummer</th>
+                    <th>Sted</th>
+                </thead>
+                <tbody></tbody>
+            </table>
+            <ul></ul>
+            <div id="vindu">
+                <header>Rediger kontakt <div>X</div>
+                </header>
+                <div class="content"></div>
+                <form>
+                    <label for="fornavn">Fornavn</label><input type="text" id="firstname"></br>
+                    <label for="etternavn">Etternavn</label><input type="text" id="lastname"></br>
+                    <label for="tlf">Tlf</label><input type="text" id="tel"></br>
+                    <label for="epost">Epost</label><input type="text" id="email"></br>
+                    <label for="adresse">Adresse</label><input type="text" id="address"></br>
+                    <label for="postnummer">Postnummer</label><input type="text" id="zipcode"></br>
+                    <label for="sted">Sted</label><input type="text" id="place"></br>
+                    <div id="feedback"></div>
+                    <button>Rediger kontakt</button>
+                </form>
+                <div id="mapid"></div>
+                <script>
+                    const mymap = L.map('mapid').setView([51.505, -0.09], 13);
+                    L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoiYmFtc2Vicm9tIiwiYSI6ImNqdjZ1ZHdnYTAwMWo0MW83ZHI3czlvZ2oifQ.FMGR6SlKMiL3EYA-DTwNRg', {
+                        attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> ' +
+                            'contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
+                            'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+                        maxZoom: 18,
+                        id: 'mapbox.streets',
+                        accessToken: 'pk.eyJ1IjoiYmFtc2Vicm9tIiwiYSI6ImNqdjZ1ZHdnYTAwMWo0MW83ZHI3czlvZ2oifQ.FMGR6SlKMiL3EYA-DTwNRg'
+                    }).addTo(mymap);
+
+                    mymap.on('click', e => {
+                        alert("You clicked the map at " + e.latlng); // When you click on the map an alert will show and tell you where you clicked.
+                    });
+
+                    navigator.geolocation.getCurrentPosition(showPosition, error); //Getting the current position of the computer
+
+                    function showPosition(position) {
+                        console.log(position)
+                        mymap.flyTo([position.coords.latitude, position.coords.longitude]) // Fly to the computer's position
+                    }
+
+                    function error(error) {
+                        console.log(error);
+                    }
+                    // The map doesn't show properly, but when you zoom out you can see parts of it.
+                </script>
+            </div>
+        </section>
+        <section id="addcontact">
+            <h2>Legg til kontakt</h2>
+            <form>
+                <label for="fornavn">Fornavn</label><input type="text" id="firstname"></br>
+                <label for="etternavn">Etternavn</label><input type="text" id="lastname"></br>
+                <label for="tlf">Tlf</label><input type="text" id="tel"></br>
+                <label for="epost">Epost</label><input type="text" id="email"></br>
+                <label for="adresse">Adresse</label><input type="text" id="address"></br>
+                <label for="postnummer">Postnummer</label><input type="text" id="zipcode"></br>
+                <label for="sted">Sted</label><input type="text" id="place"></br>
+                <div id="feedback"></div>
+                <button>Legg til kontakt</button>
+                <ul class="contacts"></ul>
+            </form>
+        </section>
+    </section>
+    <script src="js/slideshow.js" charset="utf-8"></script>
+    <script src="js/classes/menu.js" charset="utf-8"></script>
+    <script>
+        new Menu('body>nav>ul', 'body>section>section', 'js/menu.json');
+    </script>
+    <script src="js/classes/contacts.js" charset="utf-8"></script>
+    <script>
+        const contacts = new Contacts('#searchcontact ul');
+    </script>
+    <script src="js/default.js" charset="utf-8"></script>
+</body>
+
+</html>

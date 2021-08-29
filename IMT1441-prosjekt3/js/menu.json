@@ -1,0 +1,17 @@
+[
+    {
+        "menuText": "Slideshow",
+        "id": "slideshow",
+        "scriptsrc": ""
+    },
+    {
+        "menuText": "Søk kontakt",
+        "id": "searchcontact",
+        "scriptsrc": "js/searchcontact.js"  
+    },
+    {
+        "menuText": "Legg til kontakt",
+        "id": "addcontact",
+        "scriptsrc": "js/addcontact.js"
+    }
+]
